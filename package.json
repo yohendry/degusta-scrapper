@@ -1,0 +1,19 @@
+{
+  "name": "degusta-scrapper",
+  "version": "1.0.0",
+  "description": "desgusta scrapper for alexa skill",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yohendry/degusta-scrapper.git"
+  },
+  "author": "yohendry hurtado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yohendry/degusta-scrapper/issues"
+  },
+  "homepage": "https://github.com/yohendry/degusta-scrapper#readme"
+}
