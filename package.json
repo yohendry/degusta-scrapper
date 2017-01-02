@@ -4,7 +4,7 @@
   "description": "desgusta scrapper for alexa skill",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests --recursive"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/yohendry/degusta-scrapper/issues"
   },
-  "homepage": "https://github.com/yohendry/degusta-scrapper#readme"
+  "homepage": "https://github.com/yohendry/degusta-scrapper#readme",
+  "devDependencies": {
+    "chai": "^3.5.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "scrape-it": "^3.2.2"
+  }
 }
