@@ -76,6 +76,37 @@ class DegustaAPI {
       callback);
   }
 
+  searchRestaurants(params, callback) {
+    var url;
+
+    if (_.isString(this.url)) {
+      url = `${this.url}/search?ciudad=panama&q=${params.q}`;
+    } else {
+      url = this.url;
+      url.url = `${url.url}/search?ciudad=panama&q=${params.q}`;
+    }
+
+    return scrapeIt(url, {
+        restaurants: {
+          listItem: '.search-holder > .search-article',
+          data: {
+            price: '.precio em',
+            name: '.rest-head h3 a',
+            url: {
+              selector: '.rest-head h3 a',
+              attr: 'href'
+            }
+          }
+        }
+      },
+      function(err, data) {
+        data.restaurants = _.slice(data.restaurants, 0, 4);
+        callback(err, data)
+      }
+
+    );
+  }
+
   topRestaurants(params, callback) {
     var tab = "tab201";
     var priceIndex = 0;

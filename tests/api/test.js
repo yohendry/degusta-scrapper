@@ -38,7 +38,7 @@ describe('Degusta', function() {
     });
   });
 
-  it('can get restaurant data', function(done) {
+  describe('can get restaurant data', function() {
     var degusta = new DegustaAPI({
       url: 'https://www.degustapanama.com/',
       headers: {
@@ -46,28 +46,53 @@ describe('Degusta', function() {
       }
     });
 
-    degusta.goToRestaurant({
-      url: '/restaurante/gelato-y-co_101955.html'
-    }, function(err, data) {
-      if (err) {
-        done(err);
-      } else {
-        expect(data.title).to.equal('Gelato & Co');
-        expect(data.ratings.length).to.equal(5);
-        expect(data.hasOnlineBooking).to.equal(false);
-        done();
+    it('Vinoteca', function(done) {
+      degusta.goToRestaurant({
+        url: '/restaurante/vinoteca_340.html'
+      }, function(err, data) {
+        if (err) {
+          done(err);
+        } else {
+          expect(data.title).to.equal('Vinoteca');
+          expect(data.ratings.length).to.equal(5);
+          expect(data.hasOnlineBooking).to.equal(true);
+          done();
+        }
+      });
+    });
+
+    it('Gelato', function(done) {
+      degusta.goToRestaurant({
+        url: '/restaurante/gelato-y-co_101955.html'
+      }, function(err, data) {
+        if (err) {
+          done(err);
+        } else {
+          expect(data.title).to.equal('Gelato & Co');
+          expect(data.ratings.length).to.equal(5);
+          expect(data.hasOnlineBooking).to.equal(false);
+          done();
+        }
+      });
+    })
+  });
+
+  it('can search restaurants', function(done) {
+    var degusta = new DegustaAPI({
+      url: 'https://www.degustapanama.com/',
+      headers: {
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36'
       }
     });
 
-    degusta.goToRestaurant({
-      url: '/restaurante/vinoteca_340.html'
+    degusta.searchRestaurants({
+      q: 'pizza'
     }, function(err, data) {
       if (err) {
         done(err);
       } else {
-        expect(data.title).to.equal('Vinoteca');
-        expect(data.ratings.length).to.equal(5);
-        expect(data.hasOnlineBooking).to.equal(true);
+        console.log(data.restaurants.length);
+        expect(data.restaurants.length).to.equal(4);
         done();
       }
     });
