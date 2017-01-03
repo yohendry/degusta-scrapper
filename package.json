@@ -2,7 +2,7 @@
   "name": "degusta-scrapper",
   "version": "1.0.0",
   "description": "desgusta scrapper for alexa skill",
-  "main": "index.js",
+  "main": "app/degusta.js",
   "scripts": {
     "test": "mocha tests --recursive"
   },
